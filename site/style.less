@@ -1,0 +1,350 @@
+@import 'lib/_lesshat';
+
+@b: #333;
+@w: #fff;
+@brown: #4F3D30;
+@orange: #F9A32C;
+@beige: #F4ECE4;
+@bluegroup: #8AB8EA;
+@bluegroup2: #0E1B3D;
+
+.fontSerif{ font-family: 'PT Serif', serif;}
+.fontSans{ font-family: 'PT Sans Narrow', sans-serif;}
+
+body{
+  .fontSerif;
+}
+
+.topbar{
+  position: relative;
+  z-index: 10;
+  background: @brown;
+  color:@w;
+  font-size: 0.9em;
+  line-height: 3em;
+  .title{ color:@orange; }
+  .text{
+    a{color:@beige; margin-left: 10px; &:hover{color:@orange;}}
+  }
+  .languages{
+    line-height: 0;
+    text-align: right;
+    .flag{
+      cursor:pointer;
+      display: inline-block;
+      border: 1px solid @brown/1.1;
+      width: 24px; height: 24px;
+      .border-radius(50%);
+      padding: 2px;
+      margin: 6px;
+      img{width: 18px;}
+      &.active{
+        border: 1px solid @beige;
+      }
+      &:hover{
+        border: 1px solid @orange;
+      }
+    }
+  }
+}
+
+.thebg{
+  position: fixed;
+  z-index: 0;
+  width: 100%;
+  height: 25%;
+  background: url(img/bgpattern.png);
+  &:after{
+    content:"";
+    width: 100%;
+    height: 180px;
+    position: absolute;
+    bottom:-180px;
+    left: 0;
+    background:url(img/bgtransparency.png);
+  }
+}
+
+header{
+  position: fixed;
+  z-index: 9;
+  width: 100%;
+  top: 0;
+  padding: 40px 0;
+  background: url(img/bgtransparency.png) bottom;
+  h1{
+    text-align: center;
+    span{display: none;}
+    img{
+      width: 100%;
+      max-width: 218px;
+
+    }
+  }
+  nav{
+    margin-top: 36px;
+    ul{
+      list-style: none;
+      text-align: center;
+      li{
+        display: inline-block;
+        a{
+          display: block;
+          padding: 10px 14px;
+          color:@brown;
+          text-decoration: none;
+          &.active, &:hover{
+            text-decoration: none;
+            border-bottom: 2px solid @orange;
+            color:@b;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+.area{
+  min-height: 1000px;
+  background-size: cover;
+  background-position: bottom;
+  padding-top: 160px;
+  &#discover{ background-image: url(img/discover.jpg)}
+  &#expedition{ background-image: url(img/expedition.jpg)}
+  &#partners{ background-image: url(img/partners.jpg)}
+  &#contact{ background-image: url(img/contact.jpg)}
+  .container, .container-fluid{
+    position: relative;
+    z-index: 1;
+
+  }
+}
+
+
+
+#discover{
+  .mainBanner{
+    .slick-slide{
+      height: 400px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
+      .box-shadow(0 10px 20px fade(@b,60%));
+      .title{
+        .fontSans;
+        font-size: 4em;
+        font-weight: 400;
+        line-height: 1em;
+        color:@brown;
+        position: absolute;
+        top:60px; left: 40px;
+        strong{display: block; font-weight: 700;}
+      }
+      .text{
+        position: absolute; left: 40px; bottom: 40px;
+        color:@w; font-size: 1.4em;
+      }
+      .action{
+        position: absolute;right: 40px;bottom: 30px;
+        display: block;
+        padding: 10px 40px;
+        color:@w;
+        border:1px solid @w;
+        &:hover{
+          background: @beige;
+          color:@brown;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+  .mt{margin-top: 40px;}
+  article.about{
+    .labelTitle{
+      .background-image(linear-gradient(left, @brown, fade(@brown, 20%)));
+      color:@w;
+      font-size: 2em;
+      padding: 20px;
+      color:@beige;
+    }
+    p{
+      font-size: 1.2em;
+      color:@beige;
+      padding: 10px 0;
+    }
+  }
+}
+
+.slick-arrow{z-index: 2;}
+.slick-prev{left: 20px;}
+.slick-next{right: 20px;}
+
+
+#expedition{
+  .expeditionPack{
+    margin-top: 60px;
+    display: block;
+    background-size: cover;
+    background-position: center;
+    height: 250px;
+    color:@w;
+    padding: 20px;
+    .box-shadow(0 10px 20px fade(@b,60%));
+    .title{
+      .fontSans;
+      line-height: 1.2em;
+      font-size: 2.2em;
+      color:@beige;
+      strong{display: block;}
+    }
+    .view{
+      position: absolute;
+      left: 50%;  bottom: -20px;
+      width: 200px;    height: 40px;
+      margin: 0 0 0 -100px;
+      text-align: center;
+      background: url(img/bgpattern.png);
+      color:@brown;
+      line-height: 40px;
+      .box-shadow(0 10px 20px fade(@b,60%));
+    }
+    &:hover{
+      text-decoration: none;
+      cursor: pointer;
+      .view{
+        background:@brown; color:@beige;
+      }
+    }
+  }
+
+}
+
+
+#partners{
+  .partners{
+
+    .slick-slide{
+      margin: 10px 10px 30px 10px;
+      background: @beige;
+      .box-shadow(0 10px 20px fade(@b,60%));
+      padding: 10px;
+      img{width:100%;}
+      color:@brown;
+      .titulo{
+        margin-top:10px;
+        margin-bottom: 0;
+        .fontSans;
+        font-size: 2em;
+        font-weight: bold;
+      }
+      .text{
+        .fontSerif;
+        margin-top: 0;
+      }
+    }
+
+  }
+}
+
+
+#contact{
+  color:@brown;
+  .title{
+    .fontSans;
+    font-weight: bold;
+    font-size: 3em;
+  }
+  form{
+    input, textarea{
+      width: 100%;
+      .box-sizing(border-box);
+      background:transparent;
+      border:none;
+      border-bottom: 1px solid @brown;
+      padding: 5px 10px;
+      .fontSerif;
+      color: @brown;
+      margin-bottom: 10px;
+    }
+    button{
+      float: right;
+      background:@brown;
+      color:@beige;
+      padding: 10px 30px;
+      border:none;
+      &:hover{
+        background: @beige;
+        color:@brown;
+      }
+    }
+  }
+}
+
+
+footer{
+  .powered{text-align: right; padding: 20px;}
+  nav{
+    margin: 0;
+    background: @brown;
+    text-align: center;
+    ul{
+      list-style: none;
+      margin: 0; padding: 0;
+      li{
+        display: inline-block;
+        a{
+          font-size: 0.7em;
+          display: block;
+          padding: 5px 20px;
+          color:@beige;
+          &:hover{color:@w; text-decoration: none;}
+        }
+      }
+    }
+  }
+  .blue{
+    background:@bluegroup;
+    text-align: center;
+    padding: 5px 0 0 0;
+    .fontSans;
+    a{
+      display: block;
+      color:@bluegroup2;
+      font-size: 0.8em;
+      p{ display: block; padding: 3px; padding: 0; margin: 0; }
+    }
+  }
+}
+
+
+
+/*XS*/
+@media (max-width:768px){
+  .topbar{l
+    ine-height: 1.6em; font-size: 0.8em;.text a{margin: 0;}
+    .languages{.flag{margin-top: -3px;}}
+  }
+  header{
+
+    h1{
+      img{
+        width: 140px;
+      }
+    }
+    nav{
+      margin-top: 4px;
+      ul{
+        padding: 0;
+        margin: 0;
+        li{
+          a{
+            padding: 10px;
+          }
+        }
+      }
+    }
+  }
+}
