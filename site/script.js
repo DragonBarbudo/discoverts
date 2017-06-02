@@ -5,6 +5,13 @@ smoothScroll.init();
 $(document).ready(function(){
 
 
+  $('.scrollarea').perfectScrollbar(); 
+
+  $('.datepicker').datepicker({
+    language: "es",
+});
+
+
   $('header nav a').click(function(){
 
   });
@@ -14,7 +21,7 @@ $(document).ready(function(){
   $('.partners').slick({
     centerMode: true,
     centerPadding: '20px',
-    slidesToShow:3,
+    slidesToShow:5,
     focusOnSelect: true,
     arrows:false,
     autoplay: true,

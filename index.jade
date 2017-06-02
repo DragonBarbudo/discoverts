@@ -9,8 +9,12 @@ head
   link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700|PT+Serif:400,700")
   link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css")
   link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css")
+  link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/remodal/1.1.1/remodal.min.css")
+  link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/remodal/1.1.1/remodal-default-theme.css")
+  link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+  link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/0.7.0/css/perfect-scrollbar.min.css")
   link(rel="stylesheet", href="site/style.css")
-body
+body(data-spy="scroll" data-target=".navbar")
 
   .thebg
 
@@ -29,12 +33,12 @@ body
         span Discover The Serengeti
         img(src="site/img/discovertheserengeti.png", alt="Discover The Serengeti")
     .col-md-8.col-xs-12
-      nav
-        ul
-          li: a(href="#discover" data-scroll).active Discover The Serengeti
-          li: a(href="#expedition" data-scroll) Expedition Package
-          li: a(href="#partners" data-scroll) Partners
-          li: a(href="#contact" data-scroll) Contact
+      nav.navbar
+        ul.nav.navbar-nav
+          li.active: a(href="#discover" data-scroll).page-scroll Discover The Serengeti
+          li: a(href="#expedition" data-scroll).page-scroll Expedition Package
+          li: a(href="#partners" data-scroll).page-scroll Partners
+          li: a(href="#contact" data-scroll).page-scroll Contact
   
   section.area#discover
     .container-fluid
@@ -60,20 +64,86 @@ body
         p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias ratione iure magni, nam dignissimos obcaecati doloremque vero, nihil aperiam fuga eum mollitia dolore consectetur? Sed tenetur, et error doloremque totam.
   
   section.area#expedition
+    h2 EXPEDITION PACKAGE
     .container
       mixin expeditionPack(title, text, url, img)
-        a(href="#{url}" style="background-image:url(#{img})").expeditionPack
+        a(data-remodal-target="#{url}" style="background-image:url(#{img})").expeditionPack
           .title !{title}
           .text #{text}
           .view VIEW EXPEDITION
-      .col-md-5.col-md-offset-1: +expeditionPack('<strong>3 days classic lodge</strong> or adventure camping safari', 'Lake Manyara, Ngorongoro Crater, Tarangire National park.', '#ep-1', 'site/img/expedition-pack.jpg')
-      .col-md-5: +expeditionPack('<strong>3 days classic lodge</strong> or adventure camping safari', 'Lake Manyara, Ngorongoro Crater, Tarangire National park.', '#ep-1', 'site/img/expedition-pack.jpg')
-      .col-md-5.col-md-offset-1: +expeditionPack('<strong>3 days classic lodge</strong> or adventure camping safari', 'Lake Manyara, Ngorongoro Crater, Tarangire National park.', '#ep-1', 'site/img/expedition-pack.jpg')
-      .col-md-5: +expeditionPack('<strong>3 days classic lodge</strong> or adventure camping safari', 'Lake Manyara, Ngorongoro Crater, Tarangire National park.', '#ep-1', 'site/img/expedition-pack.jpg')
-  
+        .remodal(data-remodal-id="#{url}")
+          button(data-remodal-action="close").remodal-close
+          h1 !{title}
+          p.where #{text}
+          .container-fluid
+            .col-md-6.info
+              .scrollarea
+                if block
+                  block
+            .col-md-6.booking
+              .scrollarea
+                h2 Book Now
+                form(action="#")
+                  label
+                    span Adults
+                    input(type="number" id="adults")
+                  label
+                    span Date
+                    input(type="text" id="date").datepicker
+                  label Payment Method
+                  .container-fluid.paymethod
+                    .col-md-3
+                      label
+                        input(type="radio" name="payment" value="visa")#pay-visa
+                        i.fa.fa-cc-visa
+                    .col-md-3
+                      label
+                        input(type="radio" name="payment" value="mastercard")#pay-master
+                        i.fa.fa-cc-mastercard
+                    .col-md-3
+                      label
+                        input(type="radio" name="payment" value="paypal")#pay-pal
+                        i.fa.fa-cc-paypal
+                  label Information
+                  label
+                    span Name
+                    input(type="text") 
+                  label
+                    span Last Name
+                    input(type="text")  
+                  label
+                    span Email
+                    input(type="text") 
+                  label
+                    span Credit card number
+                    input(type="text") 
+      mixin description
+        p  Arrive to Kilimanjaro International Airport at 23:20pm, here you will meet African wildcats Expeditions Driver/Guide, pick and transfer to Arusha .Overnight at Ilboru Safari lodge.
+        p #[strong Day 1:] LakeManyara National park
+        p This morning you will drive to Lake Manyara National park, is yet another Rift valley lake park renowned for its unique rainforest microclimate, woodland and marshy swamps. The swampy Forest is incorporated within the park and it is a heaven for forest birds and primates. The diverse habitats are the home of a great variety of mammals and birds, marking this park one of the world-best-small-park, the ground waters from the west of the lake flow through the forest into the permanent swamp. This carpet of the wetlands are well known as the breeding and feeding sites for the thousands of pink backed pelicans ,yellow billed stocks, marabou stocks and other more. Cheetahs, Leopard, Hippos, Elephants, Buffaloes, Giraffes, Blue Monkeys, Baboons, Impala as well as its famous trees climbing Lion .Stay overnight Country lodge at Karatu area/ inside the Ngorongoro Conservation.
+        p #[strong Day 2:]  Drive to Ngorongoro Crater
+        p Today you will leave your lodge in the early morning with your picnic lunch to theNgorongoro conservation Area, the Ngorongoro Crater is a UNESCO world 
+        p Heritage site. the Ngorongoro conservation is a multiple land use that Maasai and their livestock share the land, after registration you will drive through the rain forest up to crater view point . 
+        p The Ngorongoro crater is vast volcanic caldera, the rim of the caldera stands 610m to the floor ,the surface of the crater floor cover 265kmsq and 1700m to 1830m above the sea level, the highest point at the rim its 2333m from sea level. The Ngorongoro caldera it’s a wildlife sanctuary in world, about 25,000 large mammals lives here, including Lion.  Leopard, Cheetah, jackals, Hyena, Elephants, Buffaloes, Wildebeest, Zebras, Kongoni, Eland, Grants gazelle, Thomson gazelle, Warthog, Hippopotamus if lucky here you can see the Endangered Black rhino serous, Ostrich, Flamingoes, Kori bustard, Secretary bird, and many more, take the lunch into the Crater, Continues with the game drive  late afternoon exit a Crater . Stay overnight  at Tarangire lodge/camping. 
+        p #[strong Day 3:] Tarangire National park
+        p Early morning Tarangire National park game drive,  it’s the best game viewing in Tanzania, the park was gazette first  as a game Reserve in 1957 and was later become the National park in 1970.the park cover about 2600kmsq.the park have hydrological regime that ensures year around permanent water. The Tarangire National park its known for its  Tarangire river, valley, wetlands ,rolling hills, rocky outcrops, acacia woodlands, One of the greatest features of the park and characteristic that sticks in the mind after a visit to Tarangire are  the longest living and biggest  tree in world ‘the Baobab trees. During the dry season the park supports the highest density of Elephants than any other National park in Tanzania, the  other wildlife found here is  Lion, Cheetah, Leopard, Buffaloes, Giraffe, Water buck, Grants gazelle, Greater and Lesser kudu, Fringe eared  Oryx, Tree climbing pythons, Baboons ,Monkeys.  Afternoon drive back to Arusha for dinner and overnight.             
+      .col-md-5.col-md-offset-1
+        +expeditionPack('<strong>3 days classic lodge</strong> or adventure camping safari', 'Lake Manyara, Ngorongoro Crater, Tarangire National park.', '#ep-3days', 'site/img/expedition-pack.jpg')
+          +description
+
+      .col-md-5
+        +expeditionPack('<strong>9 days classic lodge</strong> or adventure camping safari', 'Lake Manyara, Ngorongoro Crater, Tarangire National park.', '#ep-9days', 'site/img/expedition-pack.jpg')
+          +description
+      .col-md-5.col-md-offset-1
+        +expeditionPack('<strong>12 days adventure</strong> camping safari, trekking safari and culture visit', 'Lake Manyara, Ngorongoro Crater, Tarangire National park.', '#ep-12days', 'site/img/expedition-pack.jpg')
+          +description
+      .col-md-5
+        +expeditionPack('<strong>13 days for trekking safaris</strong> and cultural tour', 'Lake Manyara, Ngorongoro Crater, Tarangire National park.', '#ep-13days', 'site/img/expedition-pack.jpg')
+          +description
   
   
   section.area#partners
+    h2 PARTNERS
     .partners
       div
         img(src="site/img/partner-1.png", alt="Partner")
@@ -101,6 +171,7 @@ body
         .text Discovering Serengeti
     
   section.area#contact
+    h2 CONTACT US
     .container
       .col-md-6
         .title Contact Us
@@ -128,4 +199,7 @@ body
   script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous")
   script(src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js")
   script(src="https://cdnjs.cloudflare.com/ajax/libs/smooth-scroll/11.1.0/js/smooth-scroll.min.js")
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/remodal/1.1.1/remodal.min.js")
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js")
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/0.7.0/js/perfect-scrollbar.jquery.min.js")
   script(src="site/script.js")

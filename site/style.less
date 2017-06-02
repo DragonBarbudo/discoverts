@@ -99,6 +99,11 @@ header{
             color:@b;
           }
         }
+        &.active a{
+          text-decoration: none;
+          border-bottom: 2px solid @orange;
+          color:@b;
+        }
       }
     }
   }
@@ -118,7 +123,16 @@ header{
   .container, .container-fluid{
     position: relative;
     z-index: 1;
-
+  }
+  h2{
+    text-align: center;
+    .fontSans;
+    font-weight: bold;
+    color:@brown;
+    padding: 40px 0;
+    font-size: 3em;
+    border-bottom: 1px solid @beige/1.2;
+    position: relative;z-index: 1;
   }
 }
 
@@ -219,8 +233,70 @@ header{
       }
     }
   }
-
 }
+
+
+.ps>.ps__scrollbar-y-rail>.ps__scrollbar-y{background-color:@orange; .border-radius(0); }
+  .remodal{
+    max-width: 960px;
+    background-image: url(img/bgpattern.png);
+    color:@brown;
+    h1{
+      .fontSans;
+      strong{display: block;}
+    }
+    .where{font-size: 0.9em;}
+    .scrollarea{
+      max-height: 450px; position: relative;
+      background:#EBEAE8;
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      .box-shadow(0 10px 40px fade(@b, 25%));
+    }
+    h2{text-align: left; .fontSans; font-size: 2.5em;}
+    .info{
+      text-align: left;
+      p{
+        margin: 10px;
+      }
+    }
+    form{
+      text-align: left;
+      label{
+        .fontSans;
+        display: block;
+        font-size: 1.2em;
+        margin-bottom: 20px;
+        span{
+          margin-right: 10px;
+          display: inline-block;
+          width: 25%;
+        }
+        input, select{
+          display: inline-block;
+          background:@beige/1.2;
+          border: none;
+          width: 68%;
+          .fontSerif;
+          color:@b;
+          .box-sizing(border-box);
+          padding: 2px 5px;
+        }
+      }
+      .paymethod{
+        label{
+          i{font-size: 30px; cursor:pointer;}
+          input{
+            display: none;
+            &:checked + i{
+              color:@orange;
+            }
+          }
+        }
+      }
+    }
+  }
 
 
 #partners{
